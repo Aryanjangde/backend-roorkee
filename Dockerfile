@@ -5,6 +5,10 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc libc-dev build-essential && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -26,9 +30,16 @@ ENV SECRET_KEY=${SECRET_KEY}
 # Copy the rest of the application code
 COPY . .
 
+# Run database migrations and collect static files
+# RUN python manage.py migrate && \
+    # python manage.py collectstatic --noinput
+
 EXPOSE 8000
 
-CMD ["gunicorn", "-c", "gunicorn.conf.py"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://127.0.0.1:8000/health || exit 1
