@@ -199,30 +199,33 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/vol/static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Celery configuration
-# CELERY_BROKER_URL = 'redis://localhost:6379/0'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TIMEZONE = 'UTC'
-# CELERY_ENABLE_UTC = True
+#Celery configuration
+CELERY_BROKER_URL = 'redis://cep-ssf.ae6kvi.ng.0001.aps1.cache.amazonaws.com:6379/0'
+CELERY_RESULT_BACKEND = 'redis://cep-ssf.ae6kvi.ng.0001.aps1.cache.amazonaws.com:6379/0'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
 
-# # Cacheops settings
-# CACHEOPS_REDIS = {
-#     'host': 'localhost',  # Redis host
-#     'port': 6379,         # Redis port
-#     'db': 1,              # Redis database index
-#     'socket_timeout': 3,  # Socket timeout in seconds
-# }
+# Cacheops settings
+CACHEOPS_REDIS = {
+    'host': 'cep-ssf-ro.ae6kvi.ng.0001.aps1.cache.amazonaws.com',  # Redis host
+    'port': 6379,         # Redis port
+    'db': 1,              # Redis database index
+    'socket_timeout': 3,  # Socket timeout in seconds
+}
 
-# CACHEOPS_DEFAULTS = {
-#     'timeout': 60*15  # 15 minutes
-# }
+CACHEOPS_DEFAULTS = {
+    'timeout': 60*15  # 15 minutes
+}
 
-# CACHEOPS = {
-#     'myapp.*': {'ops': 'all', 'timeout': 60*60},  # Cache all queries for myapp models for 1 hour
-#     # Add more rules as needed
-# }
+CACHEOPS = {
+    'myapp.*': {'ops': 'all', 'timeout': 60*60},  # Cache all queries for myapp models for 1 hour
+    # Add more rules as needed
+}
+
+
+
 
 
