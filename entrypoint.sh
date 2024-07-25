@@ -7,4 +7,4 @@
 python manage.py collectstatic --noinput
 
 # Start Gunicorn
-exec gunicorn -c gunicorn.conf.py
+exec gunicorn -c gunicorn.conf.py mysite.wsgi:application
