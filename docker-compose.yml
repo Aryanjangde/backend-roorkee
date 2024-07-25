@@ -6,8 +6,6 @@ services:
     restart: always
     volumes:
       - static-data:/vol/static
-    env_file:
-      - .env
     environment:
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_USER=${DATABASE_USER}
