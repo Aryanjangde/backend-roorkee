@@ -9,6 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import viewsets
+from django.http import JsonResponse
+
 
 from .models import (
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, 
@@ -505,3 +507,5 @@ class CategoryChoicesView(APIView):
         return Response(CustomUser._meta.get_field('category').choices, status=status.HTTP_200_OK)
 
 
+def health_check(request):
+    return JsonResponse({'status': 'ok'})
