@@ -51,6 +51,7 @@ from .views import (
 
 
 urlpatterns = [
+    path('health/', health_check, name='health_check'),
     
     path('states/', StateListAPIView.as_view(), name='state-list'),
     path('states/<int:pk>/', StateDetailAPIView.as_view(), name='state-detail'),
